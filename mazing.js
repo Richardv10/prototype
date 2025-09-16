@@ -9,6 +9,8 @@ Position.prototype.toString = function() {
 
 var Mazing = function(id) {
 
+  // Original JavaScript code by Chirp Internet: www.chirpinternet.eu
+  // Please acknowledge use of this code by including this header.
 
   /* bind to HTML element */
 
@@ -58,23 +60,11 @@ var Mazing = function(id) {
   document.addEventListener("keydown", this.keyPressHandler, false);
 };
 
-Mazing.prototype.enableSpeech = function() {
-  this.utter = new SpeechSynthesisUtterance()
-  this.setMessage(this.mazeMessage.innerText);
-};
-
 Mazing.prototype.setMessage = function(text) {
 
   /* display message on screen */
   this.mazeMessage.innerHTML = text;
   this.mazeScore.innerHTML = this.heroScore;
-
-  if(this.utter && text.match(/^\w/)) {
-    /* speak message aloud */
-    this.utter.text = text;
-    window.speechSynthesis.cancel();
-    window.speechSynthesis.speak(this.utter);
-  }
 
 };
 

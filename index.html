@@ -24,13 +24,11 @@
 <script>
   var Maze, MazeGame;
 
-  const makeMaze = (id, width, height, speech = false) => {
+  const makeMaze = (id, width, height) => {
     Maze = new FancyMazeBuilder(width, height);
     Maze.display(id);
     MazeGame = new Mazing("maze");
-    if(speech) {
-      MazeGame.enableSpeech();
-    }
+  
   };
 
   // Handle form submission
@@ -38,8 +36,7 @@
     e.preventDefault();
     const width = parseInt(document.getElementById('maze_width').value, 10);
     const height = parseInt(document.getElementById('maze_height').value, 10);
-    const speech = document.getElementById('maze_speech').checked;
-    makeMaze("maze_container", width, height, speech);
+    makeMaze("maze_container", width, height);
   });
 
   // Initial maze

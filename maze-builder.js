@@ -1,7 +1,8 @@
 class MazeBuilder {
+// Here be dragons
 
-  // Original JavaScript code by Chirp Internet: www.chirpinternet.eu
-  // Please acknowledge use of this code by including this header.
+  /* maze generation using recursive division method
+     ref: https://en.wikipedia.org/wiki/Maze_generation_algorithm#Recursive_division_method */
 
   constructor(width, height) {
 
@@ -50,7 +51,7 @@ class MazeBuilder {
 
     });
 
-    /* start partitioning */
+    /* partitioning */
 
     this.partition(1, this.height - 1, 1, this.width - 1);
 
