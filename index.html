@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  
+<form id="mazeForm" style="margin-bottom: 1em;">
+  <label for="maze_width">Width:</label>
+  <input type="number" id="maze_width" name="maze_width" min="2" max="21" value="12">
+  <label for="maze_height">Height:</label>
+  <input type="number" id="maze_height" name="maze_height" min="2" max="21" value="12">
+  <button type="submit">Generate Maze</button>
+</form>
+
+<div id="maze_container"><!-- --></div>
+
+<script src="maze-builder.js"></script>
+<script src="fancy-maze-builder.js"></script>
+<script src="mazing.js"></script>
+<script>
+  var Maze, MazeGame;
+
+  const makeMaze = (id, width, height, speech = false) => {
+    Maze = new FancyMazeBuilder(width, height);
+    Maze.display(id);
+    MazeGame = new Mazing("maze");
+    if(speech) {
+      MazeGame.enableSpeech();
+    }
+  };
+
+  // Handle form submission
+  document.getElementById('mazeForm').addEventListener('submit', function(e) {
+    e.preventDefault();
+    const width = parseInt(document.getElementById('maze_width').value, 10);
+    const height = parseInt(document.getElementById('maze_height').value, 10);
+    const speech = document.getElementById('maze_speech').checked;
+    makeMaze("maze_container", width, height, speech);
+  });
+
+  // Initial maze
+  makeMaze("maze_container", 12, 12);
+</script>
+</body>
+</html>
